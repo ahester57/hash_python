@@ -1,9 +1,8 @@
-### Asynchronous vs. Synchronous Decision
+## Asynchronous vs. Synchronous Decision
 
-[Asynchronous vs. Synchronous Decision](sync_or_async.md)
 Little noticable difference in smaller task pools.
 
-#### Synchronous 10000 hashes
+#### Synchronous 10,000 hashes
 ```
 $ time python hash.py -c 10000 --async false
 
@@ -29,7 +28,7 @@ sys     0m0.062s
 ---------------------
 ```
 
-#### Asynchronous 1000 hashes
+#### Asynchronous 10,000 hashes
 
 ```
 $ time python hash.py -c 10000 --async true
@@ -57,7 +56,7 @@ sys     0m0.031s
 ---------------------
 ```
 
-#### Synchronous 1000000 hashes
+#### Synchronous 1,000,000 hashes
 ```
 $ time python hash.py -c 1000000 --async false
 
@@ -83,7 +82,7 @@ sys     0m0.061s
 ---------------------
 ```
 
-#### Asynchronous 1000000 hashes
+#### Asynchronous 1,000,000 hashes
 ```
 $ time python hash.py -c 1000000 --async true
 

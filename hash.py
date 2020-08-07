@@ -29,7 +29,12 @@ class App(object):
         print("About to do {} thing(s).".format(how_many_things))
         for i in range(how_many_things):
             # Create 'how_many_things' 'Class' objects and put them in this App's self.objects list
-            self.objects.append(sha256.SHA256(lorem.paragraph()))
+            if self.args.enable_small_value:
+                self.objects.append(sha256.SHA256("t"))
+            elif self.args.enable_large_value:
+                self.objects.append(sha256.SHA256("t"))
+            else:
+                self.objects.append(sha256.SHA256(lorem.sentence()))
         # Create a task list
         tasks_list = []
         # Cycle through this App's objects
@@ -40,7 +45,8 @@ class App(object):
             tasks_list = [obj.async_sha256() for obj in self.objects]
         else:
             print('sync')
-            [obj.sha256() for obj in self.objects]
+            for obj in self.objects:
+                obj.sha256()
         if (self.args.enable_async):
             # now wait for each object's do_something function to complete
             asyncio.gather(*tasks_list)
@@ -132,8 +138,14 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--count', dest='count', default=5, const=True, nargs='?',
                         help='How many things to do at once.')
     parser.add_argument("--async", dest='enable_async', type=str2bool, nargs='?',
-                        const=True, default=True,
-                        help="--async [TRUE|false]")
+                        const=True, default=False,
+                        help="--async [true|FALSE]")
+    parser.add_argument("--small", dest='enable_small_value', type=str2bool, nargs='?',
+                        const=True, default=False,
+                        help="--single [true|FALSE]")
+    parser.add_argument("--large", dest='enable_large_value', type=str2bool, nargs='?',
+                        const=True, default=False,
+                        help="--large [true|FALSE]")
     # Set the app to handle interrupt signal with our custom signal handler
     signal.signal(signal.SIGINT, signal_handler)
     # Initialize the app with the CLI arguments

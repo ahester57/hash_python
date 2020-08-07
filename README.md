@@ -1,4 +1,8 @@
-## Python SHA256
+# Python SHA256
+### Austin Hester
+### University of Missouri - St. Louis
+### CS 5732
+### Prof. Mark Hauschild  
 
 [View Report](report/README.md)
 
