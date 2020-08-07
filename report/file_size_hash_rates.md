@@ -36,3 +36,19 @@ sys     0m0.031s
 crashed: MemoryError
 ```
 I tried making some adjustments to avoid this memory error, but my entire PC crashed doing so.
+
+
+
+### Flops
+
+1 hash/s requires the equivalent of 12,700 flop/s. [1]
+
+
+>1 integer operation = 2 floating point operations
+>
+>1 hash = 6.35K integer operations
+>
+>1 hash = 12.7K floating point operations
+
+
+[1] PetaFLOPS and how it relates to Bitcoin

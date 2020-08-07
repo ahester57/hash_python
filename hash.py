@@ -1,12 +1,14 @@
-
-import lorem
+# Python SHA256
+## Austin Hester
+## CS 5732
+## UMSL 2020
 
 import argparse
 import asyncio
 import signal
 import sys
 
-from module import sha256
+from sha256 import sha256
 
 
 class App(object):
@@ -27,17 +29,19 @@ class App(object):
         :return: Success or Failure (0 or 1)
         """
         print("About to do {} thing(s).".format(how_many_things))
+        # Get the seed
+        if self.args.enable_small_value:
+            seed = sha256.SHA256.SMALL_SEED()
+        elif self.args.enable_large_value:
+            seed = sha256.SHA256.LARGE_SEED()
+        else:
+            seed = sha256.SHA256.LEGIT_SEED()
+        # Initialize all the objects
         for i in range(how_many_things):
             # Create 'how_many_things' 'Class' objects and put them in this App's self.objects list
-            if self.args.enable_small_value:
-                self.objects.append(sha256.SHA256("t"))
-            elif self.args.enable_large_value:
-                self.objects.append(sha256.SHA256("t"))
-            else:
-                self.objects.append(sha256.SHA256(lorem.sentence()))
+            self.objects.append(sha256.SHA256(next(seed)))
         # Create a task list
         tasks_list = []
-        # Cycle through this App's objects
         # Append each object's do_something function to the todo list
         loop = asyncio.get_event_loop()
         if (self.args.enable_async):
@@ -45,7 +49,8 @@ class App(object):
             tasks_list = (obj.async_sha256() for obj in self.objects)
         else:
             print('sync')
-            (obj.sha256() for obj in self.objects)
+            for o in (obj for obj in self.objects):
+                o.sha256()
         if (self.args.enable_async):
             # now wait for each object's do_something function to complete
             asyncio.gather(*tasks_list)

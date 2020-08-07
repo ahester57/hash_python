@@ -108,4 +108,28 @@ sys     0m0.047s
 ---------------------
 ```
 
-Looks like synchronous is the winner, so we'll go with that.
+
+### Synchronous Average
+
+```
+1000000 / 56.3 = 17762 hash/s
+1000000 / 63.4 = 15773 hash/s
+------------------------------
+average = 16767.5 hash/s
+```
+
+### Asynchronous Average
+
+```
+1000000 / 72.5 = 13793 hash/s
+1000000 / 77.5 =  12903 hash/s
+------------------------------
+average = 13348 hash/s
+```
+
+Looks like synchronous is the winner, so we'll go with that. Odd python.
+
+#### Specs For This Test
+
+i5-8350U @ 1.90 GHz
+23.8 GB RAM
