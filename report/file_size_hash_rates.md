@@ -35,3 +35,4 @@ sys     0m0.031s
 ```
 crashed: MemoryError
 ```
+I tried making some adjustments to avoid this memory error, but my entire PC crashed doing so.

@@ -42,11 +42,10 @@ class App(object):
         loop = asyncio.get_event_loop()
         if (self.args.enable_async):
             print('async')
-            tasks_list = [obj.async_sha256() for obj in self.objects]
+            tasks_list = (obj.async_sha256() for obj in self.objects)
         else:
             print('sync')
-            for obj in self.objects:
-                obj.sha256()
+            (obj.sha256() for obj in self.objects)
         if (self.args.enable_async):
             # now wait for each object's do_something function to complete
             asyncio.gather(*tasks_list)
