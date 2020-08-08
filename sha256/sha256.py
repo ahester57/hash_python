@@ -23,6 +23,13 @@ class SHA256(object):
         # print(hashlib.sha256(what).hexdigest())
     
     @staticmethod
+    def infinite_hashes():
+        while True:
+            seed = next(SHA256.LEGIT_SEED())
+            hashval = SHA256.sha256(seed)
+            yield seed, hashval
+    
+    @staticmethod
     def SMALL_SEED():
         value = "t".encode()
         while True:

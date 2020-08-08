@@ -7,6 +7,7 @@ import argparse
 import asyncio
 import signal
 import sys
+import time
 
 from sha256 import sha256
 
@@ -20,37 +21,52 @@ class App(object):
         :type args: argparse.Namespace
         """
         self.args = args
-        self.objects = []
+    
+    @staticmethod
+    def find_birthday(birthday="03011030"):
+        # find the birthday
+        birthday_length = len(birthday)
+        start = time.time()
+        while True:
+            seed, hash = next(sha256.SHA256.infinite_hashes())
+            hashhex = hash.hexdigest()
+            for b in range(birthday_length, 4, -1):
+                if hashhex[0:b] == birthday[0:b]:
+                    print("WAMOO:\t{}".format(b))
+                    print("Seed:\t{}".format(seed.hex()))
+                    print("Hash:\t{}".format(hash.hexdigest()))
+                    end = time.time()
+                    print("Time:\t{}".format(end - start))
 
     async def do_a_few_things_at_once(self, how_many_things=5):
         """
         :param how_many_things: How many things to do
         :type how_many_things: int
-        :return: Success or Failure (0 or 1)
+        :return: None
         """
         print("About to do {} thing(s).".format(how_many_things))
         # Get the seed
-        if self.args.enable_small_value:
-            seed = sha256.SHA256.SMALL_SEED()
-        elif self.args.enable_large_value:
-            seed = sha256.SHA256.LARGE_SEED()
-        else:
-            seed = sha256.SHA256.LEGIT_SEED()
+        seed = sha256.SHA256.LEGIT_SEED()
+
         
-        # Append each object's function to the todo list
-        tasks_list = []
-        loop = asyncio.get_event_loop()
-        if (self.args.enable_async):
-            print('async')
-            tasks_list = (sha256.SHA256.async_sha256(next(seed)) for o in range(how_many_things))
+        if self.args.enable_birthday:
+            App.find_birthday("0202020202020202020202020202020202")
         else:
-            print('sync')
-            for o in range(how_many_things):
-                sha256.SHA256.sha256(next(seed))
-        if (self.args.enable_async):
-            # now wait for each object's do_something function to complete
-            asyncio.gather(*tasks_list)
-        print("Done with {} thing(s).".format(how_many_things))
+            if self.args.enable_small_value:
+                seed = sha256.SHA256.SMALL_SEED()
+            elif self.args.enable_large_value:
+                seed = sha256.SHA256.LARGE_SEED()
+            tasks_list = []
+            if (self.args.enable_async):
+                loop = asyncio.get_event_loop()
+                print('async')
+                tasks_list = (sha256.SHA256.async_sha256(next(seed)) for o in range(how_many_things))
+                asyncio.gather(*tasks_list)
+            else:
+                print('sync')
+                for o in range(how_many_things):
+                    sha256.SHA256.sha256(next(seed))
+            print("Done with {} thing(s).".format(how_many_things))
 
     def validate_input_args(self):
         """
@@ -146,6 +162,9 @@ if __name__ == '__main__':
     parser.add_argument("--large", dest='enable_large_value', type=str2bool, nargs='?',
                         const=True, default=False,
                         help="--large [true|FALSE]")
+    parser.add_argument("--birthday", dest='enable_birthday', type=str2bool, nargs='?',
+                        const=True, default=False,
+                        help="--birthday [true|FALSE]")                        
     # Set the app to handle interrupt signal with our custom signal handler
     signal.signal(signal.SIGINT, signal_handler)
     # Initialize the app with the CLI arguments
