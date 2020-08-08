@@ -30,7 +30,7 @@ class App(object):
         while True:
             seed, hash = next(sha256.SHA256.infinite_hashes())
             hashhex = hash.hexdigest()
-            for b in range(birthday_length, 4, -1):
+            for b in range(birthday_length, 5, -1):
                 if hashhex[0:b] == birthday[0:b]:
                     print("WAMOO:\t{}".format(b))
                     print("Seed:\t{}".format(seed.hex()))

@@ -84,7 +84,7 @@ c
 
 ## That example turned out to be fairly to acheive, so extending the birthday
 
-Now, the birthday is a bunch of repeating 2s.
+Now, the birthday is a bunch of repeating 02s.
 
 ```
 About to do 5 thing(s).
@@ -121,3 +121,45 @@ Seed:   31941bcc3245aff63bbc9b5a3ee3fa69
 Hash:   02020ca88271c1b5ae7366ba180e324fa7c69b215bcb971a4e97793ccdb34f5b
 Time:   117.38549613952637
 ```
+
+Look for big ones in the logs with: `r'WAMOO:\s+[1,6-9]'`
+
+```
+WAMOO:	6
+Seed:	27e554cfa3ea491ef6de501956f45628
+Hash:	02020283319324a0078608c5cd36699a96da90a6b0d3d752858e92c1ca662d82
+Time:	31.101929903030396
+WAMOO:	6
+Seed:	f8c0780e9568d4abd0e594f94e3cdab0
+Hash:	020202ade1addcbf4994a6d91c475512edf1590cc96daf4b8445e4f40a0e50ba
+Time:	35.473092555999756
+WAMOO:	6
+Seed:	07036cc5049ae7d7798d364bb983830e
+Hash:	0202023e93b28a35fd4ed33fd4855a372cb913c5c43c9c36a91e8075f9b728a2
+Time:	48.03986144065857
+WAMOO:	7
+Seed:	d526b920c768ed92fc1755252c3a146b
+Hash:	020202063d0e8de571f52540363688a51c8b4d2e0195565ef9730e9cde9f2da4
+Time:	39.459866523742676
+WAMOO:	7
+Seed:	2ca1026de4d91ee84862e49ccba342f5
+Hash:	0202020cb0bbb20362a750e4ffff904c290aeb3e7cfbd7e52f1d1bc83b4ef6ee
+Time:	2703.1289732456207
+WAMOO:	7
+Seed:	a71f524b374ca3d4383342438833e8ee
+Hash:	02020205270df8a5b1784b339ae6a720c06c49579967376505ba6665f3f36b8f
+Time:	4827.271413326263
+WAMOO:	7
+Seed:	b7f6a5addd35597d6d9c35bfd42c9d93
+Hash:	0202020a262813b9ad9a301458b06f522bb2528481d6c5cb43a1890f6bd8ef1d
+Time:	7019.261016130447
+WAMOO:	7
+Seed:	affa6b066269bbaaa0efeecab65ac380
+Hash:	02020204af6e46db24cf42a0f8c2323f5b04133ae92122f2eab6a60ba7489df8
+Time:	10358.512585639954
+```
+
+#### Specs For This Test
+
+i5-3570k @ 4.11 GHz (89% usage)
+8 GB RAM (87 MB usage)
