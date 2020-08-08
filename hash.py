@@ -36,21 +36,17 @@ class App(object):
             seed = sha256.SHA256.LARGE_SEED()
         else:
             seed = sha256.SHA256.LEGIT_SEED()
-        # Initialize all the objects
-        for i in range(how_many_things):
-            # Create 'how_many_things' 'Class' objects and put them in this App's self.objects list
-            self.objects.append(sha256.SHA256(next(seed)))
-        # Create a task list
+        
+        # Append each object's function to the todo list
         tasks_list = []
-        # Append each object's do_something function to the todo list
         loop = asyncio.get_event_loop()
         if (self.args.enable_async):
             print('async')
-            tasks_list = (obj.async_sha256() for obj in self.objects)
+            tasks_list = (sha256.SHA256.async_sha256(next(seed)) for o in range(how_many_things))
         else:
             print('sync')
-            for o in (obj for obj in self.objects):
-                o.sha256()
+            for o in range(how_many_things):
+                sha256.SHA256.sha256(next(seed))
         if (self.args.enable_async):
             # now wait for each object's do_something function to complete
             asyncio.gather(*tasks_list)

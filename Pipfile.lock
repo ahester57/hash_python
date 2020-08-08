@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "577dd04966de4b4761b99fd22abcd7ddc82aeb4d0631cec352775960ed64dd50"
+            "sha256": "7f7606f08e0544d8d012ef4d097dabdd6df6843a28793eb6551245d4b2db4242"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7"
+            "python_version": "3.8"
         },
         "sources": [
             {
@@ -15,15 +15,6 @@
             }
         ]
     },
-    "default": {
-        "lorem": {
-            "hashes": [
-                "sha256:785f4109a241fc2891e59705e85d065f6e6d3ed6ad91750a8cb54d4f3e59d934",
-                "sha256:c9c2914b5a772022417c398bd74b7bbd712e73ff029ba82720855e458f13ae42"
-            ],
-            "index": "pypi",
-            "version": "==0.1.1"
-        }
-    },
+    "default": {},
     "develop": {}
 }
