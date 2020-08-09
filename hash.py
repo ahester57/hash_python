@@ -50,7 +50,7 @@ class App(object):
 
         
         if self.args.enable_birthday:
-            App.find_birthday("0202020202020202020202020202020202")
+            App.find_birthday("03011030")
         else:
             if self.args.enable_small_value:
                 seed = sha256.SHA256.SMALL_SEED()

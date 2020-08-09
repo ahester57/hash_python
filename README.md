@@ -6,7 +6,7 @@
 
 [View Report](report/README.md)
 
-(Python3.7)
+(Python3.8)
 
 ### To install dependencies, first install pipenv: 
 
@@ -15,6 +15,8 @@
 ### Then in the project directory, run: 
 
 ```pipenv install```  
+
+```pipenv shell```  
 
 ----
 
@@ -59,4 +61,10 @@ or
 ### To hash 10kb of 't' characters 100 times:
 
 ```python hash.py -c 100 --large```
+
+----
+
+### To exit the python virtual shell:
+
+```exit```
 
