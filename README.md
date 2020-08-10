@@ -22,45 +22,51 @@
 
 ### To run it:
 
-```python hash.py```  
+```python run.py```  
 
 ----
 
 ### To get help:
 
-```python hash.py -h```
+```python run.py -h```
 
 or
 
-```python hash.py --help```  
+```python run.py --help```  
 
 ----
 
 ### To give it a custom number of things to do:
 
-```python hash.py -c <num>```
+```python run.py -c <num>```
 
 or
 
-```python hash.py --count <num>```
+```python run.py --count <num>```
 
 ----
 
 ### To enable asynchronous mode:
 
-```python hash.py --async```
+```python run.py --async```
 
 ----
 
 ### To hash a 't' 100 times:
 
-```python hash.py -c 100 --small```
+```python run.py -c 100 --small```
 
 ----
 
 ### To hash 10kb of 't' characters 100 times:
 
-```python hash.py -c 100 --large```
+```python run.py -c 100 --large```
+
+----
+
+### To find a hash starting with a given hex value:
+
+```python run.py --birthday c0ffee```
 
 ----
 

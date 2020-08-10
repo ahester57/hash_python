@@ -6,6 +6,7 @@
 import asyncio
 import hashlib
 import secrets
+import sys
 
 
 class SHA256(object):
@@ -45,3 +46,9 @@ class SHA256(object):
     def LEGIT_SEED():
         while True:
             yield secrets.token_bytes(16)
+
+
+if __name__ == '__main__':
+    print("This class cannot be called directly.")
+    sys.exit(1)
+
