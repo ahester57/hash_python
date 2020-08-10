@@ -22,6 +22,7 @@ class App(object):
     
     @staticmethod
     def find_birthday(birthday):
+        birthday = birthday.lower()
         # find the birthday
         birthday_length = len(birthday)
         print("Looking for hashes beginning with '{}'".format(birthday))
